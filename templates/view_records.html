@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center mb-4">Список транспортных средств</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Дата регистрации</th>
+            <th>Вид ТС</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>VIN-код</th>
+            <th>Фрейм</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.id }}</td>
+                <td>{{ vehicle.registration_date }}</td>
+                <td>{{ vehicle.vehicle_type }}</td>
+                <td>{{ vehicle.make }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{ vehicle.vin_code }}</td>
+                <td>{{ vehicle.frame_code }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('home') }}">Назад</a>
+{% endblock %}

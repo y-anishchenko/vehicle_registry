@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Транспортное средство успешно добавлено!</p>
+<p>VIN-код: {{ vehicle.vin_code }}</p>
+<a href="{{ url_for('home') }}">Добавить ещё</a>
+{% endblock %}

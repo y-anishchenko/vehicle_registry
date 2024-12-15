@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .form-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Регистрация ТС</h2>
+            <form action="{{ url_for('add_vehicle') }}" method="POST">
+                <div class="mb-3">
+                    <label for="registration_date" class="form-label">Дата регистрации:</label>
+                    <input type="date" class="form-control" name="registration_date" required>
+                </div>
+                <div class="mb-3">
+                    <label for="vehicle_type" class="form-label">Вид ТС:</label>
+                    <select class="form-select" name="vehicle_type" required>
+                        <option value="" disabled selected>Выберите вид ТС</option>
+                        <option value="Грузовой">Грузовой</option>
+                        <option value="Легковой">Легковой</option>
+                        <option value="Спец. техника">Спец. техника</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="make" class="form-label">Марка:</label>
+                    <input type="text" class="form-control" name="make" required>
+                </div>
+                <div class="mb-3">
+                    <label for="model" class="form-label">Модель:</label>
+                    <input type="text" class="form-control" name="model" required>
+                </div>
+                <div class="mb-3">
+                    <label for="vin_code" class="form-label">VIN-код:</label>
+                    <input type="text" class="form-control" name="vin_code" maxlength="17" required>
+                </div>
+                <div class="mb-3">
+                    <label for="frame_code" class="form-label">Фрейм:</label>
+                    <input type="text" class="form-control" name="frame_code">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Добавить ТС</button>
+            </form>     
+        </div>
+    </div>
+<a href="{{ url_for('view_records') }}">Список ТС</a>
+</div>
+{% endblock %}
